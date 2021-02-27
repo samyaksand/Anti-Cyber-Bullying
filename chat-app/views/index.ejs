@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<div>
+    <% if (current_user) { %>
+        <p><strong>name:</strong> <%= current_user.firstname %> <%= current_user.lastname %></p>
+        <p><strong>email:</strong> <%= current_user.email %></p>
+        <p><strong>username:</strong> <%= current_user.username %></p>
+    <% } %>
+</div>
+
+<div class="buttons mt-3">
+    <% if (current_user) { %>
+        <a class="btn btn-link-2" href="/logout"> <i class="fa fa-sign-out msg-botton-icon" aria-hidden="true"></i> </a>
+    <% } else { %>
+        <a class="btn btn-link-2" href="/auth/google"> <img src="/images/google-logo.png"> </a>
+    <% } %>
+</div>
+
+<div class="buttons mt-3">
+    <a class="btn btn-link-2" href="/msg"> <i class="fa fa-comments msg-botton-icon" aria-hidden="true"></i> </a>
+</div>

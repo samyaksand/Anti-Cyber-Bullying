@@ -7,10 +7,12 @@ const layout = require('express-ejs-layouts');
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require('connect-flash');
+const passport = require('passport');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const chatRouter = require('./routes/chat');
 
 require('./db/connect_db');
 
@@ -37,6 +39,8 @@ app.use(
   })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 // to show flash messages to user
@@ -51,6 +55,7 @@ app.use((req, res, next) => {
 
 app.use(indexRouter);
 app.use(usersRouter);
+app.use(chatRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

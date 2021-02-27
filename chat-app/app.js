@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const layout = require('express-ejs-layouts');
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const flash = require('connect-flash');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
@@ -25,8 +28,29 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+app.use(
+  session({
+    key: "chat-app",
+    secret: "chat-app",
+    store: new MongoStore({ url: process.env.DATABASE_URI })
+  })
+);
+
+app.use(flash());
+
+// to show flash messages to user
+
+app.use((req, res, next) => {
+  res.locals.current_user = req.user;
+  res.locals.danger = req.flash('danger');
+  res.locals.success = req.flash('success');
+  next();
+});
+
+
+app.use(indexRouter);
+app.use(usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

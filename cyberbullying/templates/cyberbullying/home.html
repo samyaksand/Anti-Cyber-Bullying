@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anti Cyber Bullying Portal</title>
-</head>
-<body>
+{% extends 'cyberbullying/base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
     <h1>Home page</h1>
     <h3>Please start working on ui for this. File can be found at /templates/cyberbullying/home.html</h3>
-</body>
-</html>
+
+    <h4>Total Issues: {{ total_issues }}</h4>
+    <h4>Resolved Issues: {{ resolved_issues }} </h4>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'cyberbullying/base.html' %}
+
+{% block title %}
+    Complaint {{ complaint.id }}
+{% endblock %}
+
+{% block content %}
+Date of issue => {{ complaint.issue_datetime }} <br> <br>
+Location of issue => {{ complaint.issue_location }} <br> <br>
+Description => <br>{{ complaint.issue_description }} <br> <br>
+Has it been reported to any authority? => {{ complaint.issue_reported }} <br> <br>
+Links => {{ complaint.links }} <br> <br>
+Resolution status => {{ complaint.resolution_status }} <br> <br>
+Date of issue raised => {{ complaint.created_date }} <br>
+{% endblock %}

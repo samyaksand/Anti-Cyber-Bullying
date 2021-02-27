@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,16 @@
     <title>{% block title %} {% endblock %}  | Anti Cyber Bullying Portal</title>
 </head>
 <body>
+
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'complaint_new' %}">Register complaint</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'admin_console' %}">Admin Console</a>
+        <a href="/admin/logout">Admin Logout</a>
+    {% else %}
+        <a href="/admin/login">Admin Login</a>
+    {% endif %}
+    <hr>
 
     {% block content %}
 

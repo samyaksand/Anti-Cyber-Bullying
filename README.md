@@ -32,8 +32,8 @@ Our main focus was to create one user-friendly interface so that user can come t
 - User Friendly Interface
  
 ## To Access the Admin Login
-**Username - admin
-**Password - admin
+### Username - admin
+### Password - admin
 
 ---------------------------------------------------------------------------------------------
 

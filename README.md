@@ -1,6 +1,6 @@
 # Hackverse 2.0_Code_Linguists_Anti Cyber-Bullying
 
-This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 Hackathon organized by the NITK, Surathkal
+This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 Hackathon organized by the NITK, Surathkal.
 
 ### Team Members
 

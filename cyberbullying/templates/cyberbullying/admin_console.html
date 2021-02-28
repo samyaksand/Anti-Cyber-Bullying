@@ -11,7 +11,7 @@ Admin Console
     <a href="{% url 'admin_console_resolved' %}">Resolved issues</a>
     <a href="{% url 'admin_console_unresolved' %}">Unresolved Issues</a>
     <hr>
-
+    <div style="padding: 5%;">
     {% for complaint in complaints %}
         <div style="border: 5px solid black; margin-bottom: 30px;">
             <h2><a href="{% url 'complaint_detail' pk=complaint.pk %}">Complaint {{ complaint.id }}</a></h2> <br>
@@ -19,4 +19,5 @@ Admin Console
             Location of issue => {{ complaint.issue_location }} <br> <br>
         </div>
     {% endfor %}
+</div>
 {% endblock %}

@@ -31,6 +31,9 @@ Our main focus was to create one user-friendly interface so that user can come t
 - Integrated Admin Login for Personalised Assistance
 - User Friendly Interface
  
+## To Access the Admin Login
+**Username - admin
+**Password - admin
 
 ---------------------------------------------------------------------------------------------
 

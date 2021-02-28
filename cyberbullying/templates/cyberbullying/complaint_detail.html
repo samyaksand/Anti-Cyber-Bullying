@@ -6,12 +6,14 @@
 
 {% block content %}
 <div style="padding:5%;">
-    Date of issue => {{ complaint.issue_date_time }} <br> <br>
-    Location of issue => {{ complaint.issue_location }} <br> <br>
-    Description => <br>{{ complaint.issue_description }} <br> <br>
-    Has it been reported to any authority? => {{ complaint.issue_reported }} <br> <br>
-    Links => {{ complaint.links }} <br> <br>
-    Resolution status => {{ complaint.resolution_status }} <br> <br>
-    Date of issue raised => {{ complaint.created_date }} <br>
+    <h1>Complaint {{ complaint.id }}</h1>
+    <p> <strong>Date of issue </strong> {{ complaint.issue_date_time }}</p>
+    
+    <p><strong>Location of issue</strong> => {{ complaint.issue_location }} </p>
+    <p><strong>Description</strong>{{ complaint.issue_description }} </p>
+    <p><strong>Has it been reported to any authority?</strong> {{ complaint.issue_reported }} </p>
+    <p><strong>Links</strong> {{ complaint.links }} </p>
+    <p><strong>Resolution status</strong> {{ complaint.resolution_status }} </p>
+    <p><strong>Date of issue raised</strong> {{ complaint.created_date }}</p>
 </div>
 {% endblock %}

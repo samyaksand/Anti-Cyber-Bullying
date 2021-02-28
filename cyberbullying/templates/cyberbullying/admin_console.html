@@ -5,18 +5,24 @@ Admin Console
 {% endblock %}
 
 {% block content %}
-    <h1>Admin Console</h1>
-    <h3>Please start working on ui for this. File can be found at /templates/cyberbullying/admin_console.html</h3>
+    <div style="padding: 5%;">
+        <h1>Admin Console</h1>
 
-    <a href="{% url 'admin_console_resolved' %}">Resolved issues</a>
-    <a href="{% url 'admin_console_unresolved' %}">Unresolved Issues</a>
+        <a href="{% url 'admin_console_resolved' %}" style="font-size: 1.3em;">Resolved issues</a> <br>
+        <a href="{% url 'admin_console_unresolved' %}" style="font-size: 1.3em;">Unresolved Issues</a>
+    </div>
+
     <hr>
     <div style="padding: 5%;">
     {% for complaint in complaints %}
-        <div style="border: 5px solid black; margin-bottom: 30px;">
-            <h2><a href="{% url 'complaint_detail' pk=complaint.pk %}">Complaint {{ complaint.id }}</a></h2> <br>
-            Date of issue => {{ complaint.issue_date_time }} <br> <br>
-            Location of issue => {{ complaint.issue_location }} <br> <br>
+        {% if complaint.resolution_status %}
+            <div style="border: 5px solid black; margin-bottom: 30px; background-color: green; color: white; padding: 3%;">
+        {% else %}
+            <div style="border: 5px solid black; margin-bottom: 30px; background-color: red; color: white; padding: 3%;">
+        {% endif %}
+            <h2><a href="{% url 'complaint_detail' pk=complaint.pk %}" style="color:white">Complaint {{ complaint.id }}</a></h2> <br>
+            <strong style="color: white; font-weight: bolder;">Date of issue:</strong> {{ complaint.issue_date_time }} <br> <br>
+            <strong style="color: white; font-weight: bolder;">Location of issue:</strong> {{ complaint.issue_location }} <br> <br>
         </div>
     {% endfor %}
 </div>

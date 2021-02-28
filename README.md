@@ -26,7 +26,7 @@ Our main focus was to create one user-friendly interface so that user can come t
 #### Backend : Django, NodeJS, Express, WebSockets, Google OAuth, MongoDB
 
 ### Major Functionalities
-- Interactive ChatBot , **authenticated with through Google OAuth**	
+- Interactive ChatBot , **authenticated through Google OAuth**	
 - Live Complaint Report System 	
 - Integrated Admin Login for Personalised Assistance
 - User Friendly Interface

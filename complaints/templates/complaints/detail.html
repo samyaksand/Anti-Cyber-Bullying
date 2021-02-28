@@ -1,0 +1,107 @@
+{% extends 'cyberbullying/base.html' %}
+
+{% block title %}Case {{ complaint.reference_id }}{% endblock %}
+
+{% block content %}
+<section id="main">
+    <div class="inner">
+        <header class="major special">
+            <h1>Case {{ complaint.reference_id }}</h1>
+        </header>
+
+        <div class="track-result">
+            <div class="track-result-head">
+                <h2>{{ complaint.get_category_display }}</h2>
+                <span class="status-badge status-{{ complaint.status }}">{{ complaint.get_status_display }}</span>
+            </div>
+            <dl class="track-result-meta">
+                <dt>Submitted</dt>
+                <dd>{{ complaint.created_at|date:"d M Y" }}</dd>
+            </dl>
+            {% if complaint.investigation_notes %}
+            <p class="track-result-notes"><strong>Notes from the team:</strong> {{ complaint.investigation_notes }}</p>
+            {% endif %}
+        </div>
+
+        <div class="dash-grid">
+            <div class="dash-main">
+                <div class="dash-card">
+                    <div class="dash-card-head">
+                        <h2>Incident Timeline</h2>
+                        <a href="/complaint/{{ complaint.id }}/report/{% if tracking_code %}?tracking_code={{ tracking_code }}{% endif %}" class="case-link">Download report</a>
+                    </div>
+                    <div id="incident-list" class="case-list"><p class="chat-empty">Loading timeline...</p></div>
+
+                    <h3 class="case-subheading">Add an incident</h3>
+                    <form id="incident-form" class="report-form">
+                        <div class="field half first">
+                            <label for="incident-occurred-at">When did this happen?</label>
+                            <input type="datetime-local" id="incident-occurred-at" required>
+                        </div>
+                        <div class="field half">
+                            <label for="incident-platform">Platform</label>
+                            <input type="text" id="incident-platform">
+                        </div>
+                        <div class="field">
+                            <label for="incident-description">Description</label>
+                            <textarea id="incident-description" rows="3" required></textarea>
+                        </div>
+                        <div class="field">
+                            <label for="incident-url">URL (optional)</label>
+                            <input type="url" id="incident-url">
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Add incident" class="alt"></li>
+                        </ul>
+                    </form>
+                </div>
+
+                <div class="dash-card">
+                    <div class="dash-card-head">
+                        <h2>Evidence</h2>
+                    </div>
+                    <div id="evidence-list" class="case-list"><p class="chat-empty">Loading evidence...</p></div>
+
+                    <h3 class="case-subheading">Upload evidence</h3>
+                    <form id="evidence-form" class="report-form" enctype="multipart/form-data">
+                        <div class="field">
+                            <label for="evidence-file">Screenshot or document</label>
+                            <input type="file" id="evidence-file" required>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Upload" class="alt"></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+            <div class="dash-side">
+                <div class="dash-card dash-card-chat">
+                    <div class="dash-card-head">
+                        <h2>Messages with the administrator</h2>
+                    </div>
+                    <div id="message-list" class="chat-log">
+                        {% for msg in messages_thread %}
+                        <div class="chat-bubble-row {% if msg.author_is_admin %}from-admin{% else %}from-self{% endif %}">
+                            <div class="chat-bubble">
+                                <p class="chat-bubble-body">{{ msg.body }}</p>
+                                <span class="chat-bubble-meta">{% if msg.author_is_admin %}Admin{% else %}{{ msg.author_name|default:"You" }}{% endif %}</span>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p class="chat-empty">No messages yet.</p>
+                        {% endfor %}
+                    </div>
+                    <form id="message-form" class="chat-form">
+                        <input type="text" id="message-input" placeholder="Write a message" required>
+                        <button type="submit" class="chat-send">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="complaint-detail-root" data-complaint-id="{{ complaint.id }}" data-tracking-code="{{ tracking_code }}" style="display:none;"></div>
+<script src="/static/js/complaint_detail.js"></script>
+{% endblock %}

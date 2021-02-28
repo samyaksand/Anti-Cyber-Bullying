@@ -17,20 +17,48 @@
     		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="{% url 'home' %}" class="logo">introspect</a>
+					<a href="{% url 'home' %}" class="logo"><span class="fa fa-shield logo-icon"></span><span class="logo-text">Anti Cyber-Bullying</span></a>
 					<nav id="nav">
-						<a href="{% url 'home' %}">Home</a>
-						<a href="{% url 'complaint_new' %}">Report Complaint</a>
+						<a href="{% url 'complaint_new' %}" class="nav-emphasis">Report Cyberbullying</a>
+						<a href="{% url 'live_support' %}">Live Support</a>
+						<a href="{% url 'track_complaint' %}">Track Complaint</a>
+						<span class="nav-more">
+							<a href="#" class="nav-more-toggle">More <span class="fa fa-angle-down"></span></a>
+							<span class="nav-more-menu">
+								<a href="{% url 'home' %}">Home</a>
+								<a href="{% url 'about' %}">About</a>
+								<a href="{% url 'cyber_safety' %}">Cyber Safety Resources</a>
+								<a href="{% url 'emergency' %}">Emergency Assistance</a>
+								<a href="{% url 'contact' %}">Contact</a>
+							</span>
+						</span>
                         {% if user.is_authenticated %}
-                            <a href="{% url 'admin_console' %}">Admin Console</a>
-                            <a href="/admin/logout">Admin Logout</a>
+                            <a href="{% url 'dashboard' %}">My Dashboard</a>
+                            {% if user.profile.is_admin %}
+                                <a href="{% url 'admin_console' %}">Admin Dashboard</a>
+                            {% endif %}
+                            <span class="nav-divider"></span>
+                            <a href="{% url 'logout' %}">Logout</a>
                         {% else %}
-                            <a href="/admin/login">Admin Login</a>
+                            <a href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'admin_console' %}" class="nav-admin-login">Admin Login</a>
+                            <a href="{% url 'social:begin' 'google-oauth2' %}?next={% url 'dashboard' %}" class="nav-emphasis">User Login</a>
                         {% endif %}
 					</nav>
 				</div>
 			</header>
 			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+    {% if messages %}
+    <ul class="flash-messages">
+        {% for message in messages %}
+        <li class="flash-message flash-message-{{ message.tags }}">
+            <span class="fa flash-message-icon {% if message.tags == 'success' %}fa-check-circle{% elif message.tags == 'error' %}fa-exclamation-circle{% elif message.tags == 'warning' %}fa-exclamation-triangle{% else %}fa-info-circle{% endif %}"></span>
+            <span class="flash-message-text">{{ message }}</span>
+            <button type="button" class="flash-message-close" aria-label="Dismiss">&times;</button>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
     {% block content %}
 
@@ -39,29 +67,47 @@
     		<!-- Footer -->
 			<section id="footer">
 				<div class="inner">
-					<header>
-						<h2>Get in Touch</h2>
-					</header>
-					<form method="post" action="#">
-                        {% csrf_token %}
-						<div class="field half first">
-							<label for="name">Name</label>
-							<input type="text" name="name" id="name" />
-						</div>
-						<div class="field half">
-							<label for="email">Email</label>
-							<input type="text" name="email" id="email" />
-						</div>
-						<div class="field">
-							<label for="message">Message</label>
-							<textarea name="message" id="message" rows="6"></textarea>
-						</div>
-						<ul class="actions">
-							<li><input type="submit" value="Send Message" class="alt" /></li>
-						</ul>
-					</form>
-					
+					<div class="contact-card">
+						<header>
+							<h2>Contact &amp; Support</h2>
+						</header>
+						<p class="contact-card-intro">Have a question or need help that isn't covered by live support? Send us a message and we'll get back to you.</p>
+						<form method="post" action="{% url 'contact' %}">
+							{% csrf_token %}
+							<div class="field half first">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" placeholder="Your name" />
+							</div>
+							<div class="field half">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" placeholder="you@example.com" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" rows="6" placeholder="Describe your concern or message..."></textarea>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
 					</div>
+				</div>
+			</section>
+
+			<section id="credit-bar">
+				<div class="inner">
+					<p class="site-credit">
+						<span class="site-credit-label">Built by</span>
+						<span class="site-credit-names">Samyak Sand <span class="site-credit-role">Team Lead</span></span>
+						<span class="site-credit-sep">&middot;</span>
+						<span class="site-credit-names">Anirudh Prabhakaran</span>
+						<span class="site-credit-sep">&middot;</span>
+						<span class="site-credit-names">Vivek Dubey</span>
+						<span class="site-credit-sep">&middot;</span>
+						<span class="site-credit-names">Team Code Linguists, Hackverse 2.0, NITK Surathkal</span>
+						<a href="{% url 'about' %}" class="site-credit-link">Read more</a>
+						<a href="https://github.com/samyaksand/Anti-Cyber-Bullying/" class="site-credit-link" target="_blank" rel="noopener"><span class="fa fa-github"></span> Source Code</a>
+					</p>
 				</div>
 			</section>
 

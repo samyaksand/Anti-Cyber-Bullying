@@ -1,0 +1,56 @@
+{% extends 'cyberbullying/base.html' %}
+
+{% block title %}Track Complaint{% endblock %}
+
+{% block content %}
+<section id="main">
+    <div class="inner">
+        <header class="major special">
+            <h1>Track your complaint</h1>
+            <p>Enter your reference ID and the email used at submission to check your case status.</p>
+        </header>
+
+        <form method="POST" class="report-form">
+            {% csrf_token %}
+            <div class="field half first">
+                <label for="reference_id">Reference ID</label>
+                <input type="text" name="reference_id" id="reference_id" value="{{ reference_id|default:'' }}" required>
+            </div>
+            <div class="field half">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="{{ email|default:'' }}" required>
+            </div>
+            <ul class="actions">
+                <li><input type="submit" value="Track" class="alt" /></li>
+            </ul>
+        </form>
+
+        {% if error %}
+        <ul class="form-errors"><li>{{ error }}</li></ul>
+        {% endif %}
+
+        {% if complaint %}
+        <div class="track-result">
+            <div class="track-result-head">
+                <h2>Case {{ complaint.reference_id }}</h2>
+                <span class="status-badge status-{{ complaint.status }}">{{ complaint.get_status_display }}</span>
+            </div>
+            <dl class="track-result-meta">
+                <dt>Category</dt>
+                <dd>{{ complaint.get_category_display }}</dd>
+                <dt>Submitted</dt>
+                <dd>{{ complaint.created_at }}</dd>
+            </dl>
+            {% if complaint.investigation_notes %}
+            <p class="track-result-notes"><strong>Notes from the team:</strong> {{ complaint.investigation_notes }}</p>
+            {% endif %}
+            <ul class="actions">
+                <li><a href="{% url 'complaint_detail' complaint.id %}?tracking_code={{ complaint.tracking_code }}" class="button alt">
+                    Open case: add evidence, incidents or a message
+                </a></li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

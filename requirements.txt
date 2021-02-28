@@ -1,1 +1,17 @@
-Django ~= 2.2.4
+Django==3.1.14
+djangorestframework==3.12.4
+channels==3.0.4
+channels-redis==3.2.0
+social-auth-app-django==4.0.0
+social-auth-core==3.3.3
+django-storages==1.10.1
+django-ratelimit==3.0.1
+django-cors-headers==3.6.0
+python-dotenv==0.15.0
+psycopg2-binary==2.8.6
+boto3==1.16.63
+Pillow==8.1.0
+daphne==3.0.1
+whitenoise==5.2.0
+pytest==6.2.2
+pytest-django==4.1.0

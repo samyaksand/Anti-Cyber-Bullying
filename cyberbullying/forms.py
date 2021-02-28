@@ -1,19 +1,36 @@
 from django import forms
-from .models import Complaint
+
+from complaints.models import Complaint
+from .models import ContactMessage
+
 
 class ComplaintForm(forms.ModelForm):
 
     class Meta:
         model = Complaint
-        fields = ('name', 'issue_date_time', 'issue_location', 'issue_description', 'issue_reported', 'links')
+        fields = (
+            'reporter_name', 'category', 'platform', 'incident_date',
+            'description', 'urls', 'is_anonymous', 'contact_email',
+        )
         widgets = {
-            'issue_date_time': forms.DateTimeInput(attrs={'id': 'datepicker'}),
+            'incident_date': forms.DateTimeInput(attrs={'id': 'datepicker'}),
+            'description': forms.Textarea(attrs={'rows': 4}),
+            'urls': forms.Textarea(attrs={'rows': 2}),
+        }
+        labels = {
+            'reporter_name': 'Your name (optional if reporting anonymously)',
+            'category': 'What type of issue is this?',
+            'platform': 'Where did this happen? (platform / app / website)',
+            'incident_date': 'When did this occur?',
+            'description': 'Describe the issue',
+            'urls': 'Any links you would like to provide? (one per line)',
+            'is_anonymous': 'Report anonymously',
+            'contact_email': 'Contact email (required if reporting anonymously, used to track your case)',
         }
 
-        labels = {
-            "issue_date_time": "When did this occur?",
-            "issue_location": "Where did this occur?",
-            "issue_description" : "Describe the issue",
-            "issue_reported": "Have you reported this to any authority(eg. police)?",
-            "links" : "Any links you would like to provide?"
-        }
+
+class ContactMessageForm(forms.ModelForm):
+
+    class Meta:
+        model = ContactMessage
+        fields = ('name', 'email', 'message')

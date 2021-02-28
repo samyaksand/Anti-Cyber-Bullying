@@ -6,39 +6,81 @@ New Complaint
 
 {% block content %}
 
-
 		<!-- Main -->
-        <section id="main" >
+        <section id="main">
             <div class="inner">
                 <header class="major special">
                     <h1>Report a Complaint</h1>
                     <p>We will be the voice of your reason.</p>
-                   <div class="paragraph paragraph--type--styled-numbered-list paragraph--view-mode--default paragraph--wrapper">
-      <h3>Follow these steps to make a complaint</h3>
-                  <ol>
-                  
-          <h4><strong><li> Collect evidence and information</strong></h4>
-<p>Find out about the evidence and information you need in order to make a complaint. It is also a good idea to collect evidence before you report to social media services. Read more about <a href="https://www.esafety.gov.au/report/cyberbullying/collecting-evidence">collecting evidence</a>.</p>
+                </header>
 
-        </li>
-                  
-          <h4><strong><li>Report to the social media service where the bullying took place</strong></h4>
-<p>The <a data-entity-type="node" data-entity-uuid="97c51dc9-b56b-4df3-8f96-d2a3d680479d" href="https://www.esafety.gov.au/key-issues/esafety-guide" title="The eSafety Guide">eSafety Guide</a> has reporting links for social media services, apps, games and websites. If the abusive material is posted on one of the <a href="https://www.esafety.gov.au/about-us/consultation-cooperation/working-with-social-media">social media services</a> we work with you should report it to them first and wait 48 hours for a response.</p>
+                <ul class="report-tips">
+                    <li><span class="report-tips-step">1</span> Save evidence (screenshots, links, dates) before reporting.</li>
+                    <li><span class="report-tips-step">2</span> Report to the platform where it happened, if possible.</li>
+                    <li><span class="report-tips-step">3</span> Tell us what happened below. You can report anonymously.</li>
+                </ul>
 
-        </li>
-                  
-          <h4><strong><li>Make a cyberbullying complaint to our website.</strong></h4>
-<p>Once you have collected relevant evidence and information.</p>
-<p><a class="c-btn c-btn--alert" href="https://submit.esafety.gov.au/Produce/wizard/ca3acccd-07bf-4a12-9c0e-f93e50a46ab6?portal=1">Click here for more information.</a>
-</div>
+                <form method="POST" enctype="multipart/form-data" class="report-form">
+                    {% csrf_token %}
 
-</div>
-</section>
+                    {% if form.non_field_errors %}
+                    <ul class="form-errors">
+                        {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
 
-<form method="POST" style="padding: 5%;">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register Complaint</button>
-</form>
+                    <div class="field half first">
+                        {{ form.reporter_name.label_tag }}
+                        {{ form.reporter_name }}
+                        {% for error in form.reporter_name.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+                    <div class="field half">
+                        {{ form.category.label_tag }}
+                        {{ form.category }}
+                        {% for error in form.category.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+
+                    <div class="field half first">
+                        {{ form.platform.label_tag }}
+                        {{ form.platform }}
+                        {% for error in form.platform.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+                    <div class="field half">
+                        {{ form.incident_date.label_tag }}
+                        {{ form.incident_date }}
+                        {% for error in form.incident_date.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+
+                    <div class="field">
+                        {{ form.description.label_tag }}
+                        {{ form.description }}
+                        {% for error in form.description.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+
+                    <div class="field">
+                        {{ form.urls.label_tag }}
+                        {{ form.urls }}
+                        {% for error in form.urls.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+
+                    <div class="field half first report-form-checkbox">
+                        {{ form.is_anonymous }}
+                        {{ form.is_anonymous.label_tag }}
+                        {% for error in form.is_anonymous.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+                    <div class="field half">
+                        {{ form.contact_email.label_tag }}
+                        {{ form.contact_email }}
+                        {% for error in form.contact_email.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+                    </div>
+
+                    <ul class="actions">
+                        <li><input type="submit" value="Register Complaint" class="alt" /></li>
+                    </ul>
+                </form>
+            </div>
+        </section>
 
 {% endblock %}

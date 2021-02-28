@@ -11,9 +11,61 @@ Home
         <h1>Are you being bullied? <br> <span>Allow us to help you overcome
         ever-rising barrier of cyberbullying</span></h1>
         <ul class="actions">
-            <li> <a href="https://chat-app-hackverse.herokuapp.com/" target="_blank" class="button alt" >Chat with us ! </a></li>
-            
+            <li> <a href="{% url 'live_support' %}" class="button alt" >Chat with us ! </a></li>
+
         </ul>
+    </div>
+</section>
+
+<section id="features">
+    <div class="inner">
+        <header>
+            <h2>What this platform does</h2>
+        </header>
+        <div class="features-grid">
+            <div class="feature-tile">
+                <div class="feature-tile-inner">
+                    <div class="feature-tile-icon"><span class="fa fa-gavel"></span></div>
+                    <h4>Report and track complaints</h4>
+                    <p>Report harassment, stalking, threats, impersonation, doxxing, hate speech or blackmail, and track every case by status.</p>
+                </div>
+            </div>
+            <div class="feature-tile">
+                <div class="feature-tile-inner">
+                    <div class="feature-tile-icon"><span class="fa fa-comments"></span></div>
+                    <h4>Live chat with an administrator</h4>
+                    <p>Message an administrator directly in real time, with read receipts, typing indicators and full message history.</p>
+                </div>
+            </div>
+            <div class="feature-tile">
+                <div class="feature-tile-inner">
+                    <div class="feature-tile-icon"><span class="fa fa-lock"></span></div>
+                    <h4>Verified evidence storage</h4>
+                    <p>Uploaded evidence is hashed with SHA-256 on arrival, so an administrator can verify it has not been altered.</p>
+                </div>
+            </div>
+            <div class="feature-tile">
+                <div class="feature-tile-inner">
+                    <div class="feature-tile-icon"><span class="fa fa-user-secret"></span></div>
+                    <h4>Anonymous reporting</h4>
+                    <p>Report without creating an account and get a private tracking code to check status and send follow-up messages.</p>
+                </div>
+            </div>
+            <div class="feature-tile">
+                <div class="feature-tile-inner">
+                    <div class="feature-tile-icon"><span class="fa fa-clock-o"></span></div>
+                    <h4>Incident timeline</h4>
+                    <p>Record every incident tied to a case chronologically and download a complete report when you need it.</p>
+                </div>
+            </div>
+            <div class="feature-tile">
+                <div class="feature-tile-inner">
+                    <div class="feature-tile-icon"><span class="fa fa-check-circle"></span></div>
+                    <h4>Administrator case management</h4>
+                    <p>Administrators review evidence, update case status, add investigation notes and resolve or reopen cases from one dashboard.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -68,12 +120,18 @@ Home
 <section id="one">
     <div class="inner">
         <header>
-            <h2>Stats</h2>
+            <h2>Platform activity</h2>
         </header>
-        <p>Total Issues: {{ total_issues }}
-        <br>
-        Resolved Issues: {{ resolved_issues }}
-        </p>
+        <div class="home-stats">
+            <div class="home-stat-tile">
+                <span class="stat-number">{{ total_issues }}</span>
+                <span class="stat-label">Total reports</span>
+            </div>
+            <div class="home-stat-tile">
+                <span class="stat-number">{{ resolved_issues }}</span>
+                <span class="stat-label">Resolved cases</span>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

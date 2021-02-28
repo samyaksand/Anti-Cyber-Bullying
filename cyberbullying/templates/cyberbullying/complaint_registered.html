@@ -1,9 +1,26 @@
-{% extend 'cyberbullying/base.html' %}
+{% extends 'cyberbullying/base.html' %}
 
 {% block title %}
 Complaint Registered
 {% endblock %}
 
 {% block content %}
-Your complaint has been successfully registered.
+<section id="main">
+    <div class="inner">
+        <header class="major special">
+            <h1>Your complaint has been registered</h1>
+        </header>
+        <p>Reference ID: <strong>{{ complaint.reference_id }}</strong></p>
+        <p>Tracking code: <strong>{{ complaint.tracking_code }}</strong></p>
+        <p>Keep these safe. You can use the reference ID together with the email you provided
+        to check on the status of your complaint at any time on the
+        <a href="{% url 'track_complaint' %}">Track Complaint</a> page.</p>
+        <p>We take every report seriously, but please note we cannot guarantee absolute anonymity
+        in every circumstance, for example where legal or safety obligations require disclosure.</p>
+        <ul class="actions">
+            <li><a href="{% url 'complaint_detail' complaint.id %}?tracking_code={{ complaint.tracking_code }}" class="button alt">Open your case now</a></li>
+            <li><a href="{% url 'home' %}" class="button">Back to Home</a></li>
+        </ul>
+    </div>
+</section>
 {% endblock %}

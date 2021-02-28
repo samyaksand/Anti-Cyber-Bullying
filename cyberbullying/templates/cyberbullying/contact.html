@@ -1,0 +1,15 @@
+{% extends 'cyberbullying/base.html' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<section id="main">
+    <div class="inner">
+        <header class="major special">
+            <h1>Contact Us</h1>
+        </header>
+        <p>Use the form below the page, or report an incident directly through the
+        <a href="{% url 'complaint_new' %}">Report Cyberbullying</a> page.</p>
+    </div>
+</section>
+{% endblock %}

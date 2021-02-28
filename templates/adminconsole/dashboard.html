@@ -1,0 +1,72 @@
+{% extends 'cyberbullying/base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<section id="main">
+    <div class="inner">
+        <header class="major special dash-header">
+            <h1>Admin Dashboard</h1>
+            <p>Monitor incoming reports, respond to users and keep evidence verified.</p>
+        </header>
+
+        <div id="admin-stats" class="dash-tiles">
+            <div class="dash-tile"><span class="dash-tile-value">-</span><span class="dash-tile-label">Loading</span></div>
+        </div>
+
+        <div class="admin-chart-row">
+            <div class="dash-card admin-chart-card">
+                <div class="dash-card-head"><h2>Complaints by category</h2></div>
+                <canvas id="admin-category-chart" height="160"></canvas>
+            </div>
+        </div>
+
+        <div class="dash-grid">
+            <div class="dash-main">
+                <div class="dash-card">
+                    <div class="dash-card-head">
+                        <h2>Complaints</h2>
+                        <div class="admin-filter-bar">
+                            <input type="text" id="admin-complaint-search" placeholder="Search reference or name">
+                            <select id="admin-status-filter">
+                                <option value="">All statuses</option>
+                                <option value="submitted">Submitted</option>
+                                <option value="under_review">Under Review</option>
+                                <option value="info_required">Additional Information Required</option>
+                                <option value="in_progress">Investigation in Progress</option>
+                                <option value="resolved">Resolved</option>
+                                <option value="closed">Closed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="admin-complaints"><p class="chat-empty">Loading complaints...</p></div>
+                </div>
+            </div>
+
+            <div class="dash-side">
+                <div class="dash-card dash-card-chat">
+                    <div class="dash-card-head">
+                        <h2>Chat Inbox</h2>
+                    </div>
+                    <div id="admin-inbox"><p class="chat-empty">Loading inbox...</p></div>
+                </div>
+
+                <div id="admin-chat-panel" class="dash-card dash-card-chat admin-chat-panel" style="display:none;">
+                    <div class="dash-card-head">
+                        <h2 id="admin-chat-title">Conversation</h2>
+                    </div>
+                    <div id="admin-chat-log" class="chat-log"></div>
+                    <form id="admin-chat-form" class="chat-form">
+                        {% csrf_token %}
+                        <input type="text" id="admin-chat-input" placeholder="Reply">
+                        <button type="submit" class="chat-send">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script src="/static/js/admin_dashboard.js"></script>
+{% endblock %}

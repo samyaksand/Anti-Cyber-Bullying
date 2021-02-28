@@ -1,0 +1,45 @@
+{% extends 'cyberbullying/base.html' %}
+{% load static %}
+
+{% block title %}Live Support{% endblock %}
+
+{% block content %}
+<section id="main">
+    <div class="inner">
+        <header class="major special">
+            <h1>Live Support</h1>
+            <p>Talk directly to an administrator. Your conversation is private and saved so you can continue it later.</p>
+        </header>
+
+        {% if user.is_authenticated %}
+        <div class="chat-panel">
+            <div id="chat-root" data-ws-scheme="{% if request.is_secure %}wss{% else %}ws{% endif %}" data-ws-host="{{ request.get_host }}" data-ws-path="/ws/chat/"></div>
+            <div id="chat-log" class="chat-log"><p class="chat-empty">Loading your conversation...</p></div>
+            <p id="typing-indicator" class="chat-typing"></p>
+            <form id="chat-form" class="chat-form">
+                {% csrf_token %}
+                <input type="text" id="chat-input" placeholder="Type a message" autocomplete="off">
+                <label class="chat-attach-label" for="chat-attachment"><span class="fa fa-paperclip"></span></label>
+                <input type="file" id="chat-attachment" class="chat-attach-input">
+                <button type="submit" class="chat-send">Send</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="chat-panel chat-panel-signedout">
+            <p>Sign in with Google to start a saved, private conversation with an administrator.</p>
+            <ul class="actions">
+                <li><a href="{% url 'social:begin' 'google-oauth2' %}" class="button alt">Login with Google</a></li>
+            </ul>
+            <p class="chat-anon-note">
+                Prefer not to sign in? <a href="{% url 'complaint_new' %}">Submit an anonymous report</a> first.
+                You will get a tracking reference and a private case page where you can message an administrator
+                without registering. Already have a reference? <a href="{% url 'track_complaint' %}">Open your case</a>.
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% if user.is_authenticated %}
+<script src="{% static 'js/chat.js' %}"></script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends 'cyberbullying/base.html' %}
+
+{% block title %}My Dashboard{% endblock %}
+
+{% block content %}
+<section id="main">
+    <div class="inner">
+        <header class="major special dash-header">
+            <h1>Welcome back{% if user.first_name %}, {{ user.first_name }}{% endif %}</h1>
+            <p>Track your reports, read admin replies and stay on top of every case in one place.</p>
+        </header>
+
+        <div class="dash-tiles">
+            <div class="dash-tile">
+                <span class="dash-tile-value">{{ total_count }}</span>
+                <span class="dash-tile-label">Total cases</span>
+            </div>
+            <div class="dash-tile dash-tile-accent">
+                <span class="dash-tile-value">{{ open_count }}</span>
+                <span class="dash-tile-label">Open / in progress</span>
+            </div>
+            <div class="dash-tile">
+                <span class="dash-tile-value">{{ resolved_count }}</span>
+                <span class="dash-tile-label">Resolved</span>
+            </div>
+            <div class="dash-tile {% if notifications %}dash-tile-notify{% endif %}">
+                <span class="dash-tile-value">{{ notifications|length }}</span>
+                <span class="dash-tile-label">Unread notifications</span>
+            </div>
+        </div>
+
+        <div class="dash-grid">
+            <div class="dash-main">
+                <div class="dash-card">
+                    <div class="dash-card-head">
+                        <h2>My cases</h2>
+                    </div>
+
+                    {% if complaints %}
+                    <div class="dash-case-list">
+                        {% for c in complaints %}
+                        <a href="{% url 'complaint_detail' c.id %}" class="dash-case-row">
+                            <div class="dash-case-main">
+                                <span class="dash-case-ref">{{ c.reference_id }}</span>
+                                <span class="dash-case-category">{{ c.get_category_display }}</span>
+                            </div>
+                            <div class="dash-case-side">
+                                <span class="status-badge status-{{ c.status }}">{{ c.get_status_display }}</span>
+                                <span class="dash-case-date">{{ c.created_at|date:"d M Y" }}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="dash-empty">
+                        <p>You have not submitted any complaints yet.</p>
+                        <a href="{% url 'complaint_new' %}" class="button alt">Report an issue</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="dash-side">
+                <div class="dash-card">
+                    <div class="dash-card-head">
+                        <h2>Notifications</h2>
+                    </div>
+                    <div id="dash-notifications">
+                        {% if notifications %}
+                        <ul class="dash-notification-list">
+                            {% for n in notifications %}
+                            <li class="dash-notification" data-notification-id="{{ n.id }}">
+                                <strong>{{ n.title }}</strong>
+                                <p>{{ n.body }}</p>
+                                <button type="button" class="dash-notification-dismiss">Mark as read</button>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p class="dash-empty-inline">No new notifications.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="dash-card dash-actions-card">
+                    <ul class="actions">
+                        <li><a href="{% url 'complaint_new' %}" class="button alt">Report a new issue</a></li>
+                        <li><a href="{% url 'live_support' %}" class="button">Live Support</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    function getCookie(name) {
+        var match = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return match ? match.pop() : '';
+    }
+    document.querySelectorAll('.dash-notification-dismiss').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var row = btn.closest('.dash-notification');
+            var id = row.dataset.notificationId;
+            fetch('/api/notifications/' + id + '/read/', {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { 'X-CSRFToken': getCookie('csrftoken') },
+            }).then(function (res) {
+                if (res.ok) {
+                    row.style.opacity = '0.4';
+                    btn.textContent = 'Read';
+                    btn.disabled = true;
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

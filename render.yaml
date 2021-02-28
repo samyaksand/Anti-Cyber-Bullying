@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: anti-cyber-bullying
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    startCommand: "python manage.py migrate --noinput && daphne -b 0.0.0.0 -p $PORT website.asgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.9.18"
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        sync: false
+      - key: CSRF_TRUSTED_ORIGINS
+        sync: false
+      - key: GOOGLE_OAUTH2_KEY
+        sync: false
+      - key: GOOGLE_OAUTH2_SECRET
+        sync: false
+      - key: POSTGRES_DB
+        sync: false
+      - key: POSTGRES_USER
+        sync: false
+      - key: POSTGRES_PASSWORD
+        sync: false
+      - key: POSTGRES_HOST
+        sync: false
+      - key: POSTGRES_PORT
+        sync: false
+      - key: R2_BUCKET_NAME
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_ENDPOINT_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+
+databases:
+  - name: anti-cyber-bullying-db
+    plan: free

@@ -1,6 +1,6 @@
 # Hackverse 2.0_Code_Linguists_Anti Cyber-Bullying
 
-This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 Hackathon organized by the NITK, Surathkal
+This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 Hackathon organized by the NITK, Surathkal.
 
 ### Team Members
 
@@ -25,6 +25,16 @@ Our main focus was to create one user-friendly interface so that user can come t
 #### Frontend : HTML, CSS, JS 
 #### Backend : Django, NodeJS, Express, WebSockets, Google OAuth, MongoDB
 
+### Major Functionalities
+- Interactive ChatBot , **authenticated through Google OAuth**	
+- Live Complaint Report System 	
+- Integrated Admin Login for Personalised Assistance
+- User Friendly Interface
+ 
+## To Access the Admin Login
+### Username - admin
+### Password - admin
+
 ---------------------------------------------------------------------------------------------
 
-Demo: anirudh3p.pythonanywhere.com/
+Demo : https://anirudh3p.pythonanywhere.com/

@@ -1,4 +1,4 @@
-# Hackverse 2.0_Code_Linguists_Anti Cyber-Bullying
+# Hackverse 2.0_Code_Linguists - Anti Cyber-Bullying
 
 This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 Hackathon organized by the NITK, Surathkal.
 
@@ -6,7 +6,7 @@ This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 H
 
 | Member name|Email Id| 
 | :------------: |:---------------:| 
-| Samyak Sand ( Team Lead )    | samyaksand@gmail.com |
+| Samyak Sand ( **Team Lead** )    | samyaksand@gmail.com |
 | Anirudh Prabhakaran | anirudhprabhakaran.201ec106@nitk.edu.in |    
 | Vivek Dubey | dubey.vivek.2805@gmail.com       |  
 
@@ -18,7 +18,9 @@ In this era of ever-growing technology and new platforms for communication, we a
 
 ### What we did ?
 
-Our main focus was to create one user-friendly interface so that user can come to our website and can easily navigate to different webpages.
+Our main focus was to create one user-friendly interface for which I used HTML, CSS and JS to makes the entire UI so that user can come to our website and can easily navigate to different webpages. The live chat environment will provide instant relief where users can get authenticated through Google OAuth and talk to the help desk for personalised assistance.
+
+Users can also communicate among themselves all through WebSockets to share their experiences. The app is built on NodeJS, ExpressJS and MongoDB/
 
 ### Technical Stack used:
 
@@ -37,4 +39,4 @@ Our main focus was to create one user-friendly interface so that user can come t
 
 ---------------------------------------------------------------------------------------------
 
-Demo : https://anirudh3p.pythonanywhere.com/
+## Demo : https://samyaksand.pythonanywhere.com/

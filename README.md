@@ -42,6 +42,8 @@ Users can also communicate among themselves all through WebSockets to share thei
 ### Website Link : https://samyaksand.pythonanywhere.com/
 
 **Samyak Sand - UI & UX Design of the Entire Website**
+
 **Anriudh Prabhakaran - Django and Integration of Backend**
+
 **Vivek Dubey - Chat App**
 

@@ -20,7 +20,7 @@ In this era of ever-growing technology and new platforms for communication, we a
 
 Our main focus was to create one user-friendly interface for which I used HTML, CSS and JS to makes the entire UI so that user can come to our website and can easily navigate to different webpages. The live chat environment will provide instant relief where users can get authenticated through Google OAuth and talk to the help desk for personalised assistance.
 
-Users can also communicate among themselves all through WebSockets to share their experiences. The app is built on NodeJS, ExpressJS and MongoDB/
+Users can also communicate among themselves all through WebSockets to share their experiences. The app is built on NodeJS, ExpressJS and MongoDB.
 
 ### Technical Stack used:
 
@@ -39,4 +39,9 @@ Users can also communicate among themselves all through WebSockets to share thei
 
 ---------------------------------------------------------------------------------------------
 
-## Demo : https://samyaksand.pythonanywhere.com/
+### Website Link : https://samyaksand.pythonanywhere.com/
+
+#### Samyak Sand - UI & UX Design of the Entire Website
+#### Anriudh Prabhakaran - Django and Integration of Backened
+#### Vivek Dubey - Chat App
+

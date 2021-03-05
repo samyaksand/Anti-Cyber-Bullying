@@ -6,7 +6,7 @@ This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 H
 
 | Member name|Email Id| 
 | :------------: |:---------------:| 
-| Samyak Sand ( Team Lead )    | samyaksanjaysand.201cs251@nitk.edu.in@gmail.com |
+| Samyak Sand ( Team Lead )    | samyaksanjaysand.201cs251@nitk.edu.in |
 | Anirudh Prabhakaran | anirudhprabhakaran.201ec106@nitk.edu.in |    
 | Vivek Dubey | dubey.vivek.2805@gmail.com       |  
 

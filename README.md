@@ -32,10 +32,6 @@ Users can also communicate among themselves all through WebSockets to share thei
 - Live Complaint Report System 	
 - Integrated Admin Login for Personalised Assistance
 - User Friendly Interface
- 
-## To Access the Admin Login
-### Username - admin
-### Password - admin
 
 ---------------------------------------------------------------------------------------------
 

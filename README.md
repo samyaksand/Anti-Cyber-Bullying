@@ -4,11 +4,11 @@ This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 H
 
 ### Team Members
 
-| Member name|Email Id| 
-| :------------: |:---------------:| 
-| Samyak Sand ( Team Lead )    | samyaksanjaysand.201cs251@nitk.edu.in |
-| Anirudh Prabhakaran | anirudhprabhakaran.201ec106@nitk.edu.in |    
-| Vivek Dubey | dubey.vivek.2805@gmail.com       |  
+|        Member name        |                Email Id                 |
+| :-----------------------: | :-------------------------------------: |
+| Samyak Sand ( Team Lead ) |  samyaksanjaysand.201cs251@nitk.edu.in  |
+|    Anirudh Prabhakaran    | anirudhprabhakaran.201ec106@nitk.edu.in |
+|        Vivek Dubey        |       dubey.vivek.2805@gmail.com        |
 
 ## Team Name : Code Linguists
 
@@ -24,23 +24,19 @@ Users can also communicate among themselves all through WebSockets to share thei
 
 ### Technical Stack used:
 
-#### Frontend : HTML, CSS, JS 
-#### Backend : Django, NodeJS, Express, WebSockets, Google OAuth, MongoDB
+#### Frontend : HTML, CSS, JavaScript
+
+#### Backend : Django, NodeJS, ExpressJS, WebSockets, Google OAuth, MongoDB
 
 ### Major Functionalities
-- Interactive ChatBot , **authenticated through Google OAuth**	
-- Live Complaint Report System 	
+
+- Interactive ChatBot , **authenticated through Google OAuth**
+- Live Complaint Report System
 - Integrated Admin Login for Personalised Assistance
 - User Friendly Interface
 
----------------------------------------------------------------------------------------------
+---
 
 ### Website Link : https://samyaksand.pythonanywhere.com/
-
-**Samyak Sand - UI & UX Design of the Entire Website**
-
-**Anriudh Prabhakaran - Django and Integration of Backend**
-
-**Vivek Dubey - Chat App**
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsamyaksand%2FAnti-Cyber-Bullying&count_bg=%2379C83D&title_bg=%23000000&icon=realm.svg&icon_color=%232BB2FF&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)

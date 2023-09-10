@@ -10,6 +10,26 @@ This Repository is for Anti Cyber-Bullying Web App build for the Hackverse 2.0 H
 |    Anirudh Prabhakaran    | anirudhprabhakaran.201ec106@nitk.edu.in |
 |        Vivek Dubey        |       dubey.vivek.2805@gmail.com        |
 
+## Screenshots
+
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/3c190820-4554-4704-897a-efe0e821f875)
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/674cfeb4-4c42-4bf7-a4ca-a69505298003)
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/6e10db83-63e2-493d-8c26-add0266ee923)
+
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/3acf2cf6-7492-4347-8bbd-c7b33a2e833a)
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/4c6a9663-ef8c-4f27-bfed-4ceabcf210a6)
+
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/068e48ec-f816-4eb2-8b17-78c4ec54b8ef)
+
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/8075cd26-5f42-4b25-bbd6-e429033b6108)
+
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/c5b74b53-5857-4b16-b231-9b0731ae1c8c)
+
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/ef9f2b46-9aa1-4fc5-a35e-87354a260bd6)
+![image](https://github.com/samyaksand/Anti-Cyber-Bullying/assets/62803746/d4ac15db-fd4a-4711-802c-7180c2903fde)
+
+
+
 ## Team Name : Code Linguists
 
 ### Objective

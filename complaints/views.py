@@ -12,6 +12,11 @@ from .models import (
     VERIFICATION_RESULT_FAILED, VERIFICATION_RESULT_VERIFIED,
 )
 from .permissions import IsAdmin, IsOwnerOrAdmin, user_is_admin
+from accounts.utils import get_client_ip
+
+
+def ratelimit_key(group, request):
+    return get_client_ip(request)
 from .serializers import (
     AdminComplaintUpdateSerializer,
     CaseMessageSerializer,
@@ -43,7 +48,7 @@ class ComplaintCreateView(generics.CreateAPIView):
     serializer_class = ComplaintCreateSerializer
     permission_classes = [permissions.AllowAny]
 
-    @method_decorator(ratelimit(key='ip', rate='10/h', block=True))
+    @method_decorator(ratelimit(key=ratelimit_key, rate='10/h', block=True))
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, **kwargs)
 
@@ -72,7 +77,7 @@ class TrackComplaintView(APIView):
     at submission time. Does not require registration."""
     permission_classes = [permissions.AllowAny]
 
-    @method_decorator(ratelimit(key='ip', rate='20/h', block=True))
+    @method_decorator(ratelimit(key=ratelimit_key, rate='20/h', block=True))
     def post(self, request):
         reference_id = request.data.get('reference_id', '').strip()
         email = request.data.get('email', '').strip().lower()

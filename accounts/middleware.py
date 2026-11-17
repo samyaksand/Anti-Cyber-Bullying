@@ -1,4 +1,5 @@
 from .models import AuditLog
+from .utils import get_client_ip
 
 AUDITED_METHODS = {'POST', 'PUT', 'PATCH', 'DELETE'}
 
@@ -16,7 +17,7 @@ class AuditLogMiddleware:
                     path=request.path[:300],
                     method=request.method,
                     status_code=response.status_code,
-                    ip_address=request.META.get('REMOTE_ADDR'),
+                    ip_address=get_client_ip(request),
                 )
             except Exception:
                 pass
